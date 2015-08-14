@@ -28,7 +28,14 @@ class MexcGallery extends MexcGalleriesAppModel
 			'MexcGalleries.MexcGallery',
 			'MexcEvents.MexcEvent',
 			'MexcNews.MexcNew'
-		)
+		),
+		'UnifiedSearch.Searcheable' => array(
+			'contain' => array('MexcSpace')
+		),
+		'Temp.TempTemp' => array(
+			'field' => 'is_temp',
+			'modifiedBefore' => 1
+		),
 	);
 	
 	var $belongsTo = array(
@@ -101,5 +108,11 @@ class MexcGallery extends MexcGalleriesAppModel
 	function dashDelete($id)
 	{
 		return $this->delete($id);
+	}
+
+	function beforeSave() {
+		if (isset($this->data[$this->alias]['mexc_space_id']) && $this->data[$this->alias]['mexc_space_id'] == '')
+			$this->data[$this->alias]['mexc_space_id'] = null;
+		return true;
 	}
 }

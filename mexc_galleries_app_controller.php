@@ -12,6 +12,6 @@
  * @link          https://github.com/museudecienciasunicamp/mexc_galleries.git Mexc Galleries public repository
  */
 
-class MexcGalleriesAppController extends MexcAppController
+class MexcGalleriesAppController extends RedeAppController
 {	
 }
