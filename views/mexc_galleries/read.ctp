@@ -39,3 +39,6 @@ if (!empty($gallery['MexcRelatedContent']))
 		echo $this->Jodel->insertModule('MexcRelated.MexcRelatedContent', array('full', 3), $gallery);
 	echo $this->Bl->eboxContainer();
 }
+		//$url = $this->Html->url(array('plugin' => 'mexc_galleries', 'controller' => 'mexc_galleries', 'action' => 'another_gallery'));
+		//$this->BuroOfficeBoy->addHtmlEmbScript("new Mexc.GalleryRoller('gallery_cloud', '$url');");
+		

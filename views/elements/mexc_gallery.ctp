@@ -19,6 +19,30 @@ switch ($type[0])
 			echo $this->element('mexc_gallery_form', array('plugin' => 'mexc_galleries'));
 	break;
 	
+	case 'preview':
+		switch ($type[1])
+		{
+			case 'unified_search':
+				$item = $data['SblSearchItem'];
+
+				echo $this->Bl->h6(array('class' => 'post-type'), array(), 'Galeria');
+
+				if (!empty($data['MexcSpace']['FactSite'][0]['name']))
+					echo $this->Bl->div(array('class' => 'project'), array(), $data['MexcSpace']['FactSite'][0]['name']);
+
+				echo $this->Bl->div(array('class' => 'post-date'), array(), date('d/m/Y',strtotime($item['date'])));
+				echo $this->Bl->h5(array('class' => 'title'), array(), $item['title']);
+
+				$mexcGallery = ClassRegistry::init('MexcGalleries.MexcGallery');
+				$gallery = $mexcGallery->find('first', array(
+					'contain' => array('MexcImage'),
+					'conditions' => array('MexcGallery.id' => $data['SblSearchItem']['foreign_id'])
+				));
+				echo $this->Jodel->insertModule('MexcGalleries.MexcImage', array('preview_mini_column'), array('MexcImage' => $gallery['MexcImage'][0]));
+			break;
+		}
+	break;
+
 	case 'column':
 		if (!isset($type[1]))
 			$type[1] = false;
