@@ -22,23 +22,37 @@ switch ($type[0])
 	case 'preview':
 		switch ($type[1])
 		{
+			case 'box':
 			case 'unified_search':
-				$item = $data['SblSearchItem'];
+				if (isset($data['MexcGallery'])) {
+					$item = $data['MexcGallery'];
+					$url = array('plugin' => 'mexc_gallerys', 'controller' => 'mexc_gallerys', 'action' => 'read', $item['id']);
+					$id = $item['id'];
+				}
+				else {
+					$item = $data['SblSearchItem'];
+					$url = array('plugin' => 'mexc_gallerys', 'controller' => 'mexc_gallerys', 'action' => 'read', $item['foreign_id']);
+					$id = $item['foreign_id'];
+				}
 
 				echo $this->Bl->h6(array('class' => 'post-type'), array(), 'Galeria');
 
-				if (!empty($data['MexcSpace']['FactSite'][0]['name']))
-					echo $this->Bl->div(array('class' => 'project'), array(), $data['MexcSpace']['FactSite'][0]['name']);
+				if (!empty($data['MexcSpace']['FactSite'][0]['name'])) {
+					echo $this->Bl->anchor(array(), array('url' => '/programas/'.$data['MexcSpace']['id']),
+						$this->Bl->div(array('class' => 'project'), array(), $data['MexcSpace']['FactSite'][0]['name']));
+				}
 
 				echo $this->Bl->div(array('class' => 'post-date'), array(), date('d/m/Y',strtotime($item['date'])));
-				echo $this->Bl->h5(array('class' => 'title'), array(), $item['title']);
+				echo $this->Bl->anchor(array(), array('url' => $url),
+					$this->Bl->h5(array('class' => 'title'), array(), $item['title']));
 
 				$mexcGallery = ClassRegistry::init('MexcGalleries.MexcGallery');
 				$gallery = $mexcGallery->find('first', array(
 					'contain' => array('MexcImage'),
-					'conditions' => array('MexcGallery.id' => $data['SblSearchItem']['foreign_id'])
+					'conditions' => array('MexcGallery.id' => $id)
 				));
-				echo $this->Jodel->insertModule('MexcGalleries.MexcImage', array('preview_mini_column'), array('MexcImage' => $gallery['MexcImage'][0]));
+				echo $this->Bl->anchor(array(), array('url' => $url),
+					$this->Jodel->insertModule('MexcGalleries.MexcImage', array('preview_mini_column'), array('MexcImage' => $gallery['MexcImage'][0])));
 			break;
 		}
 	break;
