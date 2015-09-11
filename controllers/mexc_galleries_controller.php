@@ -27,7 +27,7 @@ class MexcGalleriesController extends MexcGalleriesAppController
 	function index()
 	{
 		$conditions = $this->MexcSpace->getConditionsForSpaceFiltering($this->currentSpace);
-		$galleries = $this->paginate('MexcGallery', $conditions);
+		$galleries = $this->MexcGallery->find('all', $conditions);
 		$this->set(compact('galleries'));
 	}
 	

@@ -27,7 +27,7 @@ echo $this->Bl->sbox(array('class' => 'more_content'), array('type' => 'sky', 's
 	echo $this->Bl->anchor(
 		array(), 
 		array('url' => array('plugin' => 'mexc_galleries', 'controller' => 'mexc_galleries', 'action' => 'index')),
-		'Outras galerias do Museu'
+		'Outras galerias da Rede'
 	);
 	
 echo $this->Bl->ebox();

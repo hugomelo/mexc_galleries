@@ -12,39 +12,16 @@
  * @link          https://github.com/museudecienciasunicamp/mexc_galleries.git Mexc Galleries public repository
  */
 
-// @todo Search box
+echo $this->element('header-index', array('title' => 'Galeria', 'slug'=>'galleries'));
 
-echo $this->Bl->sbox(array(), array('size' => array('M' => 12, 'g' => -1), 'type' => 'cloud'));
-	
-	echo $this->Bl->h2Dry('galerias de fotos');
-	
-	echo $this->element('pagination', array('top' => true));
-	
-	echo $this->Bl->sboxContainer(array(), array('size' => array('M' => 12), 'type' => 'column_container'));
-	
-		$total_galleries = count($galleries);
-		foreach ($galleries as $cont => $gallery)
-		{
-			echo $this->Jodel->insertModule('MexcGalleries.MexcGallery', array('column_full'), $gallery);
-			
-			if (($cont+1) % 3 == 0)
-			{
-				echo $this->Bl->floatBreak();
-				if ($cont+1 < $total_galleries)
-					echo  $this->Bl->box(
-							array(), 
-							array('size' => array('M' => 12, 'g' => -1), 'type' => 'inner_column'),
-							$this->Bl->hr()
-						);
-			}
+echo $this->Bl->srow(array('class' => 'pages news'));
+	echo $this->Bl->sdiv(array('class' => "posts-list"), array());
+		foreach ($galleries as $gallery) {
+			echo $this->Bl->sdiv(array('class' => "col-xs-12"), array());
+				echo $this->Bl->sdiv(array('class' => "post new"), array());
+					echo $this->Jodel->insertModule('MexcGalleries.MexcGallery', array('preview', 'box'), $gallery);
+				echo $this->Bl->ediv();
+			echo $this->Bl->ediv();
 		}
-		
-		echo $this->Bl->floatBreak();
-		echo $this->Bl->br();
-	echo $this->Bl->eboxContainer();
-	
-	echo $this->element('pagination');
-
-echo $this->Bl->ebox();
-
-echo $this->Bl->br();
+	echo $this->Bl->ediv();
+echo $this->Bl->erow();
