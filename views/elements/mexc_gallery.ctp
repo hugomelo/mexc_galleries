@@ -31,7 +31,7 @@ switch ($type[0])
 				}
 				else {
 					$item = $data['SblSearchItem'];
-					$url = array('plugin' => 'mexc_gallerys', 'controller' => 'mexc_gallerys', 'action' => 'read', $item['foreign_id']);
+					$url = array('plugin' => 'mexc_galleries', 'controller' => 'mexc_galleries', 'action' => 'read', $item['foreign_id']);
 					$id = $item['foreign_id'];
 				}
 
