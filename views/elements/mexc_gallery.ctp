@@ -52,7 +52,7 @@ switch ($type[0])
 					'conditions' => array('MexcGallery.id' => $id)
 				));
 				echo $this->Bl->anchor(array(), array('url' => $url),
-					$this->Jodel->insertModule('MexcGalleries.MexcImage', array('preview_mini_column'), array('MexcImage' => $gallery['MexcImage'][0])));
+					$this->Jodel->insertModule('MexcGalleries.MexcImage', array('medium'), array('MexcImage' => $gallery['MexcImage'][0])));
 			break;
 		}
 	break;

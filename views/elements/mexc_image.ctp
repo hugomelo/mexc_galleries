@@ -35,6 +35,11 @@ switch ($type[0])
 	case 'preview_column_fact_site':
 	case 'preview_mini_column':
 	case 'mini_preview':
+	case 'xlarge':
+	case 'large':
+	case 'medium':
+	case 'small':
+	case 'xsmall':
 		echo $this->Bl->img(array(), array('id' => $data['MexcImage']['img_id'], 'version' => $type[0]));
 	break;
 	
