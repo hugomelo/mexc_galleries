@@ -40,20 +40,20 @@
 		);
 		
 		// Display Level
-		echo $this->Buro->input(
-			array(),
-			array(
-				'fieldName' => 'display_level',
-				'type' => 'select',
-				'label' => __d('mexc_gallery', 'form - display level label', true),
-				'instructions' => __d('mexc_gallery', 'form - display level instructions', true),
-				'options' => array('options' => array (
-					'general' => 'Geral',
-					'fact_site' => 'Só no espaço',
-					'private' => 'Privado'
-				))
-			)
-		);
+		//echo $this->Buro->input(
+			//array(),
+			//array(
+				//'fieldName' => 'display_level',
+				//'type' => 'select',
+				//'label' => __d('mexc_gallery', 'form - display level label', true),
+				//'instructions' => __d('mexc_gallery', 'form - display level instructions', true),
+				//'options' => array('options' => array (
+					//'general' => 'Geral',
+					//'fact_site' => 'Só no espaço',
+					//'private' => 'Privado'
+				//))
+			//)
+		//);
 		
 		// Gallery name
 		echo $this->Buro->input(
